@@ -23,7 +23,7 @@ public class InicialController implements Initializable {
 
     @FXML
     public void onMenuItemCadatrarAction() {
-        System.out.println("onCadatrarAction");
+        
     }
 
     @FXML
@@ -33,7 +33,7 @@ public class InicialController implements Initializable {
 
     @FXML
     public void onALugarAction() {
-        System.out.println("onALugarAction");
+        loadView("alugarVeiculo");
     }
 
     private void loadView(String absoluteName) {
