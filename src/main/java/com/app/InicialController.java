@@ -1,5 +1,6 @@
 package com.app;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,13 +20,34 @@ public class InicialController implements Initializable {
     @FXML
     private MenuItem menuItemCadastrar; 
 
+
     @FXML
+    public void onMenuItemCadatrarAction() {
+        System.out.println("onCadatrarAction");
+    }
 
+    @FXML
+    public void onListarAction() {
+        loadView("ListaVeicolos");
+    }
 
+    @FXML
+    public void onALugarAction() {
+        System.out.println("onALugarAction");
+    }
+
+    private void loadView(String absoluteName) {
+        try {
+            App.setRoot(absoluteName);
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initialize'");
     }
 
 }

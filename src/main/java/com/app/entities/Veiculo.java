@@ -46,4 +46,6 @@ public abstract class Veiculo {
         return status == Status.DISPONIVEL;
     }
 
+    public abstract String toCSV();
+
 }
