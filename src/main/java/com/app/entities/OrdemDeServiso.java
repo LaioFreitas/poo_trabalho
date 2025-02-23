@@ -1,12 +1,14 @@
 package com.app.entities;
 
-public interface OrdemDeServiso {
+import java.time.LocalDateTime;
+
+public interface OrdemDeServiso<T> {
     
     public Void alugar();
     public Void devolver();
     public Void listar();
-    public void DataEvimisao();
-    public void DataDevolucao();
+    public LocalDateTime DataEmisao();
+    public LocalDateTime DataDevolucao();
     public void valorTotal();
-    
+
 }

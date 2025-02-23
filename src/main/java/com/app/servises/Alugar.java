@@ -1,6 +1,7 @@
 package com.app.servises;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 import com.app.entities.Cliente;
 import com.app.entities.OrdemDeServiso;
@@ -8,10 +9,18 @@ import com.app.entities.Veiculo;
 
 public class Alugar implements OrdemDeServiso {
 
+    private static final Integer ID;
     private Cliente cliente;
-    private LocalDateTime dataEmisao;
-    private LocalDateTime dataDevolucao;
+    private LocalDate dataEmisao;
+    private LocalDate dataDevolucao;
     private Veiculo veiculo;
+
+    public Alugar(Cliente cliente, LocalDate dataDevolucao, Veiculo veiculo) {
+        this.cliente = cliente;
+        this.dataEmisao = LocalDate.now();
+        this.dataDevolucao = dataDevolucao;
+        this.veiculo = veiculo;
+    }
 
     @Override
     public Void alugar() {
@@ -27,11 +36,11 @@ public class Alugar implements OrdemDeServiso {
     }
 
     @Override
-    public void DataEvimisao() {
+    public LocalDateTime DataEmisao() {
     }
 
     @Override
-    public void DataDevolucao() {
+    public LocalDateTime DataDevolucao() {
 
     }
 
