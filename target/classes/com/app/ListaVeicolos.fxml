@@ -16,7 +16,7 @@
                   <Button fx:id="rbVoltar" mnemonicParsing="false" onAction="#onBtVoltarAction" text="&lt; Voltar" />
                </items>
             </ToolBar>
-            <TableView fx:id="tableViewVeiculo" prefHeight="390.0" prefWidth="584.0">
+            <TableView fx:id="tableViewVeiculo" prefHeight="214.0" prefWidth="584.0">
               <columns>
                 <TableColumn fx:id="tableColumnCarros" prefWidth="103.0" text="Carros" />
                 <TableColumn fx:id="tableColumnMotos" prefWidth="76.0" text="Motos" />

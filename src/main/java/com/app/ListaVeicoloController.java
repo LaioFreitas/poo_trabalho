@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 public class ListaVeicoloController implements Initializable {
 
@@ -41,6 +42,8 @@ public class ListaVeicoloController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Stage stage = (Stage) App.getMainScene().getWindow();
+        tableViewVeiculo.prefHeightProperty().bind(stage.heightProperty());
     }
 
 }
