@@ -2,8 +2,10 @@ package com.app;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+import com.app.data.service.VeiculoServise;
 import com.app.gui.Alerts;
 //import com.app.utils.Utils;
 
@@ -21,34 +23,35 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class InicialController implements Initializable {
-
+    
+    
     @FXML
     private Button btALugar;
-
+    
     @FXML
     private Button btListar;
-
+    
     @FXML
     private MenuItem menuItemCadastrarVeiculo; 
-
-
+    
+    
     @FXML
     public void onMenuItemCadatrarVeiculoAction(ActionEvent event) {
         //Stage parentStage = Utils.currentStage(event);
         createDialogForm("cadastroVeiculoForm.fxml", (Stage) App.getMainScene().getWindow());
         //loadView("cadastroVeiculoForm");
     }
-
+    
     @FXML
     public void onListarAction() {
         loadView("ListaVeicolos");
     }
-
+    
     @FXML
     public void onALugarAction() {
         loadView("alugarVeiculo");
     }
-
+    
     private void loadView(String absoluteName) {
         try {
             App.setRoot(absoluteName);
@@ -56,20 +59,24 @@ public class InicialController implements Initializable {
             ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
             scrolllPane.setFitToHeight(true);
             scrolllPane.setFitToWidth(true);
-
+            
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-
+        
     }
     private void createDialogForm(String absoluteName, Stage parentStage) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             Pane pane = loader.load();
-
-           // DepartmentFormController controller = loader.getController();
-
+            
+            // DepartmentFormController controller = loader.getController();
+            CadastroVeiculosController controller = loader.getController();
+            controller.setVeiculoServise(new VeiculoServise());
+            
+            
+            
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Enter Veiculo Data");
             dialogStage.setScene(new Scene(pane));
@@ -85,6 +92,7 @@ public class InicialController implements Initializable {
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Locale.setDefault(Locale.US);
     }
 
 }
