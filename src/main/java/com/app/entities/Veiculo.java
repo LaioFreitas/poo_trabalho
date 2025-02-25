@@ -8,7 +8,7 @@ public abstract class Veiculo {
     protected String chasi;
     protected Double kilometragem;
     private Status status;
-
+    public abstract Double getTarifa();
 
     public String getChasi() {
         return chasi;
