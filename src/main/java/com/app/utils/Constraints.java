@@ -34,4 +34,14 @@ public class Constraints {
         );
     }
 
+    public static void setTextFieldDataFormater(TextField txt) {
+        txt.textProperty().addListener(
+            (_obs, oldValue, newValue) -> {
+                if (newValue != null && !newValue.matches("")) {
+                    txt.setText(oldValue);
+                }
+            }
+        );
+    }
+
 }

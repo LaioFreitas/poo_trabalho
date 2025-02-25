@@ -11,13 +11,16 @@ import com.app.data.exceptions.ValidationExeception;
 import com.app.data.service.VeiculoServise;
 import com.app.entities.Cliente;
 import com.app.entities.Veiculo;
+import com.app.gui.Alerts;
 import com.app.servises.Alugar;
+import com.app.utils.Constraints;
 import com.app.utils.Endereco;
 import com.app.utils.Utils;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -140,6 +143,7 @@ public class FormAlugarVeiculoController implements Initializable {
             aluguel = new Alugar(cliente, date, veiculo);
             aluguel.alugar(service); 
             Utils.currentStage(event).close();
+            Alerts.showAlert("aluguel realizado", null, "veiculo alugado com sucesso", AlertType.INFORMATION);
         }
         catch (ValidationExeception e) {
             setErrorMessage(e.getErrors());
@@ -253,6 +257,7 @@ public class FormAlugarVeiculoController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Constraints.setTextFieldDataFormater(txtDataDeDevolucao);
     }
 
     public VeiculoServise getService() {

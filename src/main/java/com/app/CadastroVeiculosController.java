@@ -12,6 +12,7 @@ import com.app.data.exceptions.ValidationExeception;
 import com.app.data.service.VeiculoServise;
 import com.app.entities.Veiculo;
 import com.app.enums.Status;
+import com.app.gui.Alerts;
 import com.app.utils.Constraints;
 import com.app.utils.Utils;
 import com.app.veiculos.Carro;
@@ -25,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class CadastroVeiculosController implements Initializable {
 
@@ -93,6 +95,7 @@ public class CadastroVeiculosController implements Initializable {
             entity = getFormData();
             service.save(entity);
             Utils.currentStage(event).close();
+            Alerts.showAlert("cadastro realizado", null, "veiculo cadastrado com sucesso", AlertType.INFORMATION);
         }
         catch (ValidationExeception e) {
             setErrorMessage(e.getErrors());

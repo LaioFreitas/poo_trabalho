@@ -51,8 +51,9 @@ public class VeiculoServise {
           for (String s : list) {
                String[] fields = s.split(",");
 
-               Alugar aluguel = new Alugar(null, null, null)
+               Alugar aluguel = new Alugar(null, null, null);
           }
+          return l;
      }
 
      private List<String> readCSVList(String path) {
