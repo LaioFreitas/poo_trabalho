@@ -18,9 +18,10 @@
             </ToolBar>
             <TableView fx:id="tableViewVeiculo" prefHeight="214.0" prefWidth="584.0">
               <columns>
-                <TableColumn fx:id="tableColumnCarros" prefWidth="103.0" text="Carros" />
-                <TableColumn fx:id="tableColumnMotos" prefWidth="76.0" text="Motos" />
-                  <TableColumn fx:id="tableColumnCaminhoes" prefWidth="126.0" text="Caminhoes" />
+                <TableColumn fx:id="tableColumnCarros" prefWidth="103.0" text="Cliente" />
+                <TableColumn fx:id="tableColumnMotos" prefWidth="76.0" text="Modelo" />
+                  <TableColumn fx:id="tableColumnCaminhoes" prefWidth="126.0" text="Placa" />
+                  <TableColumn prefWidth="75.0" />
               </columns>
             </TableView>
          </children>

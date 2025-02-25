@@ -15,7 +15,6 @@
           <Menu fx:id="menuItemCadastrar" mnemonicParsing="false" text="Cadastrar">
             <items>
               <MenuItem fx:id="menuItemCadastrarVeiculo" mnemonicParsing="false" onAction="#onMenuItemCadatrarVeiculoAction" text="veiculo" />
-                  <MenuItem mnemonicParsing="false" text="Cliente" />
             </items>
           </Menu>
         </menus>
@@ -23,7 +22,7 @@
       <AnchorPane prefHeight="193.0" prefWidth="600.0">
          <children>
             <Button fx:id="btALugar" layoutX="32.0" layoutY="14.0" mnemonicParsing="false" onAction="#onALugarAction" prefHeight="116.0" prefWidth="227.0" text="Alugar Veicuilo" />
-            <Button fx:id="btListar" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#onListarAction" prefHeight="116.0" prefWidth="244.0" text="Lista de veiculos" />
+            <Button fx:id="btDevolver" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#onDevolverAction" prefHeight="116.0" prefWidth="244.0" text="Devolver veiculos" />
          </children>
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="100.0" />

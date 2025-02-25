@@ -32,7 +32,7 @@ public class InicialController implements Initializable {
     private Button btALugar;
     
     @FXML
-    private Button btListar;
+    private Button btDevolver;
     
     @FXML
     private MenuItem menuItemCadastrarVeiculo; 
@@ -46,7 +46,7 @@ public class InicialController implements Initializable {
     }
     
     @FXML
-    public void onListarAction() {
+    public void onDevolverAction() {
         loadView("ListaVeicolos", _x -> {});
     }
     
@@ -67,9 +67,9 @@ public class InicialController implements Initializable {
             
             initializingAction.accept(controller);
             // Scene scene = App.getMainScene();
-            // ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
-            // scrolllPane.setFitToHeight(true);
-            // scrolllPane.setFitToWidth(true);
+            // // ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
+            // // scrolllPane.setFitToHeight(true);
+            // // scrolllPane.setFitToWidth(true);
             
         }
         catch (IOException e) {

@@ -10,12 +10,14 @@ import java.util.List;
 import com.app.entities.Cliente;
 import com.app.entities.Veiculo;
 import com.app.enums.Status;
+import com.app.servises.Alugar;
 import com.app.utils.Utils;
 import com.app.veiculos.Carro;
 
 public class VeiculoServise {
 
      private List<Veiculo> veiculos = new ArrayList<>();
+     private List<Alugar> alugueis = new ArrayList<>();
 
      public VeiculoServise() {
 
@@ -37,6 +39,15 @@ public class VeiculoServise {
           List<String> list = readCSVList("src/main/java/com/app/data/veiculosDisponiveis.csv");
           veiculos = convertVeicolo(list);
           return veiculos;
+     }
+
+     public List<Alugar> findAllAlugados() {
+          List<String> list = readCSVList("src/main/java/com/app/data/veiculosAlugados.csv");
+          alugueis = 
+     }
+
+     private List<Alugar> convetAlugarList(List<String> list) {
+          
      }
 
      private List<String> readCSVList(String path) {

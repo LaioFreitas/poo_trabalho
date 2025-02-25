@@ -98,6 +98,10 @@ public class CadastroVeiculosController implements Initializable {
             setErrorMessage(e.getErrors());
         }
     } 
+    @FXML
+    public void onBtCancelAction(ActionEvent event) {
+        Utils.currentStage(event).close();
+    }
 
     private Veiculo getFormData() {
         Locale.setDefault(Locale.US);

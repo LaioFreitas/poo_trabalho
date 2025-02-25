@@ -13,6 +13,7 @@ import com.app.servises.Alugar;
 import com.app.utils.Endereco;
 import com.app.utils.Utils;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -91,7 +92,7 @@ public class FormAlugarVeiculoController implements Initializable {
     @FXML Button btCancelar;
 
     @FXML
-    public void onBtAlugarAction() {
+    public void onBtAlugarAction(ActionEvent event) {
         // try {
         //     if (cliente == null) {
         //         cliente = new Cliente();
@@ -122,11 +123,17 @@ public class FormAlugarVeiculoController implements Initializable {
         try {
             cliente = getFormData();
             service.alugar(veiculo, cliente);
+            Utils.currentStage(event).close();
         }
         catch (ValidationExeception e) {
             setErrorMessage(e.getErrors());
         }
-        System.out.println("onBtSalvarAction");
+        Utils.currentStage(event).close();
+    }
+
+    @FXML
+    public void onBtCancelarAction(ActionEvent event) {
+        Utils.currentStage(event).close();
     }
 
     private Cliente getFormData() {

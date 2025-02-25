@@ -66,7 +66,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
           <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#onBtSalvarAction" text="Salvar" />
-            <Button fx:id="btCancelar" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#onBtCancelAction" text="Cancelar" />
         </buttons>
          <padding>
             <Insets right="5.0" />
