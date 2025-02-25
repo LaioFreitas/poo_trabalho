@@ -3,8 +3,9 @@ package com.app.data.exceptions;
 import java.util.HashMap;
 import java.util.Map;
 
+//valida os campos
 public class ValidationExeception extends RuntimeException {
-
+    
     private static final long serialVersionUID = 1L;
     private Map<String, String> errors = new HashMap<>();
 

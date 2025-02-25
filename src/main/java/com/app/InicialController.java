@@ -68,10 +68,10 @@ public class InicialController implements Initializable {
             T controller = loader.getController();
             
             initializingAction.accept(controller);
-            // Scene scene = App.getMainScene();
-            // // ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
-            // // scrolllPane.setFitToHeight(true);
-            // // scrolllPane.setFitToWidth(true);
+            // Scene seceneDois = App.getMainScene();
+            // ScrollPane scrolllPane = ((ScrollPane) seceneDois.getRoot());
+            // scrolllPane.setFitToHeight(true);
+            // scrolllPane.setFitToWidth(true);
             
         }
         catch (IOException e) {
