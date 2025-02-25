@@ -7,4 +7,5 @@ module com.app {
     exports com.app;
     exports com.app.entities;
     exports com.app.data.service;
+    exports com.app.enums;
 }

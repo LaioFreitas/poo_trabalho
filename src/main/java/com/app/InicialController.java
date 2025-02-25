@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import com.app.data.service.VeiculoServise;
 import com.app.gui.Alerts;
@@ -13,12 +14,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -44,21 +47,29 @@ public class InicialController implements Initializable {
     
     @FXML
     public void onListarAction() {
-        loadView("ListaVeicolos");
+        loadView("ListaVeicolos", _x -> {});
     }
     
     @FXML
     public void onALugarAction() {
-        loadView("alugarVeiculo");
+        loadView("alugarVeiculo", (AlugarVeiculoController controller) -> {
+            controller.setVeiculoService(new VeiculoServise());
+            controller.updateTableView();
+        });
     }
     
-    private void loadView(String absoluteName) {
+    private synchronized <T> void loadView(String absoluteName, Consumer<T> initializingAction) {
         try {
-            App.setRoot(absoluteName);
-            Scene scene = App.getMainScene();
-            ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
-            scrolllPane.setFitToHeight(true);
-            scrolllPane.setFitToWidth(true);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName + ".fxml"));
+            Parent scene = loader.load();
+            App.setRoot(scene);
+            T controller = loader.getController();
+            
+            initializingAction.accept(controller);
+            // Scene scene = App.getMainScene();
+            // ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
+            // scrolllPane.setFitToHeight(true);
+            // scrolllPane.setFitToWidth(true);
             
         }
         catch (IOException e) {

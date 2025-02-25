@@ -21,9 +21,9 @@
          <content>
             <TableView fx:id="tabelaVeiculosDisponiveis" prefHeight="304.0" prefWidth="593.0">
               <columns>
-                <TableColumn fx:id="collumnCarro" prefWidth="75.0" text="Carro" />
-                <TableColumn fx:id="collumnMoto" prefWidth="75.0" text="Moto" />
-                  <TableColumn fx:id="collumnCaminhao" prefWidth="75.0" text="Caminhao" />
+                <TableColumn fx:id="collumnModelo" prefWidth="75.0" text="Modelo" />
+                <TableColumn fx:id="collumnKilometragem" prefWidth="92.0" text="Kilometragem" />
+                  <TableColumn fx:id="collumnPlaca" prefWidth="78.0" text="Placa" />
               </columns>
             </TableView>
          </content>

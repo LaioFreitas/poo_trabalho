@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.app.entities.Veiculo;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -32,7 +33,8 @@ public class ListaVeicoloController implements Initializable {
     @FXML
     public void onBtVoltarAction() {
         try {
-            App.setRoot("telaInicial");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("telaInicial.fxml"));
+            App.setRoot(loader.load());
         }
         catch (Exception e) {
             e.printStackTrace();
