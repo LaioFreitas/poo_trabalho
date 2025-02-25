@@ -14,6 +14,9 @@ public class Cliente extends Pessoa {
         setTelefone(telefone);
         setCategoriaChn(cnh);
     }
+    public Cliente() {
+        super();
+    }
 
     public Endereco getEndereco() {
         return endereco;
@@ -39,6 +42,10 @@ public class Cliente extends Pessoa {
         this.categoriaChn = cnh;
     }
 
+    public String toCSV() {
+        return String.format("%s,%s,%s,%d,%s,%s,%s,%s,%s", getNome(), getCpf(), endereco.getRua(), endereco.getNumero(), endereco.getBairro(),
+                                endereco.getCidade(), endereco.getEstado(), getTelefone(), getCategoriaChn());       
+    }
 
 
 }

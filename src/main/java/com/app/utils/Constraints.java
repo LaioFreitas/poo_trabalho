@@ -24,4 +24,14 @@ public class Constraints {
         );
     }
 
+    public static void setTextFieldInterger(TextField txt) {
+        txt.textProperty().addListener(
+            (_obs, oldValue, newValue) -> {
+                if (newValue != null && !newValue.matches("\\d*")) {
+                    txt.setText(oldValue);
+                }
+            }
+        );
+    }
+
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.app.data.service.VeiculoServise;
+import com.app.entities.Cliente;
 import com.app.entities.Veiculo;
 import com.app.gui.Alerts;
 import com.app.servises.Alugar;
@@ -151,6 +152,9 @@ public class AlugarVeiculoController implements Initializable {
             FormAlugarVeiculoController controller = loader.getController();
             controller.setVeiculo(veiculo);
             controller.setService(new VeiculoServise());
+            controller.setCliente(new Cliente());
+
+        
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Alugar Veiculo");
             dialogStage.setScene(new Scene(pane));

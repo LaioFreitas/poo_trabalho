@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.app.entities.Cliente;
 import com.app.entities.Veiculo;
 import com.app.enums.Status;
 import com.app.utils.Utils;
@@ -25,7 +26,6 @@ public class VeiculoServise {
        try( FileWriter writer = new FileWriter("src/main/java/com/app/data/veiculosDisponiveis.csv", true)) {
             writer.write(veiculo.toCSV());
             writer.write("\n");
-            writer.close();
        }
        catch(IOException e) {
             e.printStackTrace();
@@ -65,5 +65,50 @@ public class VeiculoServise {
           }
           return veiculos;
      }
+
+     private void atualizarDadosDisponiveis(String path, Veiculo vei) {
+          List<String> listString = readCSVList(path);
+          List<Veiculo> list = convertVeicolo(listString);
+
+          list.remove(vei);
+          listString = convertToCSV(list);
+          try(FileWriter writer = new FileWriter(path)) {
+               for (String linha : listString) {
+                    writer.write(linha);
+                    writer.write("\n");
+               }
+          }
+          catch(IOException e) {
+               e.printStackTrace();
+          }
+     }
+
+     private List<String> convertToCSV(List<Veiculo> list) {
+          List <String> listString = new ArrayList<>();
+          for (Veiculo v : list) {
+               listString.add(v.toCSV());
+          }
+          return listString;
+     }
+
+     private void salvaVeiculoAlugado(String path, Veiculo vei, Cliente cliente) {
+          try( FileWriter writer = new FileWriter(path, true)) {
+               writer.write(vei.toCSV() + "," + cliente.toCSV());
+               writer.write("\n");
+          }
+          catch(IOException e) {
+               e.printStackTrace();
+          } 
+     }
+
+
+
+     public void alugar(Veiculo vei, Cliente cliente) {
+          atualizarDadosDisponiveis("src/main/java/com/app/data/veiculosDisponiveis.csv", vei);
+          vei.setStatus(Status.ALUGADO);
+          salvaVeiculoAlugado("src/main/java/com/app/data/veiculosAlugados.csv", vei, cliente);
+     }
+
+
 
 }

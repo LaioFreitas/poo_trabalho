@@ -17,5 +17,14 @@ public class Utils {
             return null;
         }
     }
+    
+    public static Integer tryParceToInteger(String str) {
+        try {
+            return Integer.parseInt(str);
+        }
+        catch (NumberFormatException e) {
+            return null;
+        }
+    }
 
 }

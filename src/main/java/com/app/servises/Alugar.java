@@ -10,20 +10,22 @@ import java.util.ArrayList;
 import com.app.data.exceptions.ClienteInexistenteException;
 import com.app.data.exceptions.VeiculoIndisponivelException;
 import com.app.data.exceptions.VeiculoInexistenteException;
+import com.app.data.service.VeiculoServise;
 import com.app.entities.Cliente;
 import com.app.entities.OrdemDeServiso;
 import com.app.entities.Veiculo;
 import com.app.enums.Status;
+import com.app.veiculos.Carro;
 import com.app.data.exceptions.*;
 public class Alugar implements OrdemDeServiso {
 
     private static Integer ID;
-    private ArrayList<Cliente> clientes;
+    private Cliente clientes;
     private LocalDate dataEmisao;
     private LocalDate dataDevolucao;
-    private ArrayList<Veiculo> veiculos;
+    private Veiculo veiculos;
 
-    public Alugar(ArrayList<Cliente> cliente, LocalDate dataDevolucao, ArrayList<Veiculo> veiculo) {
+    public Alugar(Cliente cliente, LocalDate dataDevolucao, Veiculo veiculo) {
         this.clientes = cliente;
         this.dataEmisao = LocalDate.now();
         this.dataDevolucao = dataDevolucao;
@@ -31,23 +33,27 @@ public class Alugar implements OrdemDeServiso {
     }
 
     @Override
-    public void alugar(Cliente cl, Veiculo vei) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException{
-        if (clientes.contains(cl)) {
-            if (veiculos.contains(vei)){
-                if (vei.getStatus() == Status.DISPONIVEL){
-                        System.out.println("Veículo Alugado"); // implementar com a GUI
-                        vei.setStatus(Status.ALUGADO);
-                        this.DataEmisao(); // Conseguir a data de Emissão
-                } else {
-                    throw new VeiculoIndisponivelException();
-                }
-            } else {
-                throw new VeiculoInexistenteException();
-            }
-        } else {
-            throw new ClienteInexistenteException();
-        }
+    public void alugar(Cliente cl, Veiculo vei, VeiculoServise servise) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException {
+        // if (clientes.contains(cl)) {
+        //     if (veiculos.contains(vei)){
+        //         if (vei.getStatus() == Status.DISPONIVEL){
+        //                 System.out.println("Veículo Alugado"); // implementar com a GUI
+        //                 vei.setStatus(Status.ALUGADO);
+        //                 this.DataEmisao(); // Conseguir a data de Emissão
+        //         } else {
+        //             throw new VeiculoIndisponivelException();
+        //         }
+        //     } else {
+        //         throw new VeiculoInexistenteException();
+        //     }
+        // } else {
+        //     throw new ClienteInexistenteException();
+        // }o
+
+        //((Carro)vei).setStatus(Status.ALUGADO);
+        servise.alugar(vei, cl);
     }
+
     @Override
     public void devolver(Cliente cl, Veiculo vei) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException {
         if (clientes.contains(cl)) {

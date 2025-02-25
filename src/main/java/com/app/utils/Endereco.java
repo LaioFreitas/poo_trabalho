@@ -8,12 +8,12 @@ public class Endereco {
     private String estado;
     private String cep;
 
-    public Endereco(String rua, String bairro, String cidade, String estado, String cep) {
+    public Endereco(String rua, Integer numero, String bairro, String cidade, String estado) {
         setRua(rua);
+        setNumero(numero);
         setBairro(bairro);
         setCidade(cidade);
         setEstado(estado);
-        setCep(cep);
     }
 
     public String getRua() {

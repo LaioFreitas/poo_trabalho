@@ -49,22 +49,22 @@
             <TextField fx:id="txtEstado" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="txtTelefone" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="txtCnh" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label GridPane.columnIndex="2" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Label GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label fx:id="labelNome" GridPane.columnIndex="2" />
+            <Label fx:id="labelRua" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="labelCpf" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="lableNumero" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="labelBairro" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="labelCidade" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="labelEstado" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="labelTelefone" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="labelCnh" GridPane.columnIndex="2" GridPane.rowIndex="8" />
             <Label GridPane.columnIndex="2" GridPane.rowIndex="9" />
          </children>
       </GridPane>
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
           <Button fx:id="btAlugar" mnemonicParsing="false" onAction="#onBtAlugarAction" text="Alugar" />
-            <Button mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btCancelar" mnemonicParsing="false" text="Cancelar" />
         </buttons>
       </ButtonBar>
    </children>

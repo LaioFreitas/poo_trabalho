@@ -10,6 +10,7 @@ public abstract class Pessoa {
         setNome(nome);
         setCpf(cpf);
     }
+    public Pessoa() {}
 
     public String getNome() {
         return nome;
