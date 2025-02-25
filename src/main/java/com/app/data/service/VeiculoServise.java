@@ -43,7 +43,7 @@ public class VeiculoServise {
 
      public List<Alugar> findAllAlugados() {
           List<String> list = readCSVList("src/main/java/com/app/data/veiculosAlugados.csv");
-          alugueis = 
+          return alugueis;
      }
 
      private List<Alugar> convetAlugarList(List<String> list) {
@@ -107,9 +107,9 @@ public class VeiculoServise {
           return listString;
      }
 
-     private void salvaVeiculoAlugado(String path, Veiculo vei, Cliente cliente) {
+     private void salvaVeiculoAlugado(String path, Alugar aluguel) {
           try( FileWriter writer = new FileWriter(path, true)) {
-               writer.write(vei.toCSV() + "," + cliente.toCSV());
+               writer.write(aluguel.toCSV());
                writer.write("\n");
           }
           catch(IOException e) {
@@ -119,11 +119,12 @@ public class VeiculoServise {
 
 
 
-     public void alugar(Veiculo vei, Cliente cliente) {
-          atualizarDadosDisponiveis("src/main/java/com/app/data/veiculosDisponiveis.csv", vei);
-          vei.setStatus(Status.ALUGADO);
+     public void alugar(Alugar aluguel) {
+
+          atualizarDadosDisponiveis("src/main/java/com/app/data/veiculosDisponiveis.csv", aluguel.getVeiculos());
+          (aluguel.getVeiculos()).setStatus(Status.ALUGADO);
           
-          salvaVeiculoAlugado("src/main/java/com/app/data/veiculosAlugados.csv", vei, cliente);
+          salvaVeiculoAlugado("src/main/java/com/app/data/veiculosAlugados.csv", aluguel);
      }
 
 

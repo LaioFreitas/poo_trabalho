@@ -153,6 +153,7 @@ public class AlugarVeiculoController implements Initializable {
             controller.setVeiculo(veiculo);
             controller.setService(new VeiculoServise());
             controller.setCliente(new Cliente());
+            
 
         
             Stage dialogStage = new Stage();

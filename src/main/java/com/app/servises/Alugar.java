@@ -33,7 +33,7 @@ public class Alugar implements OrdemDeServiso {
     }
 
     @Override
-    public void alugar(Cliente cl, Veiculo vei, VeiculoServise servise) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException {
+    public void alugar(VeiculoServise servise) {
         // if (clientes.contains(cl)) {
         //     if (veiculos.contains(vei)){
         //         if (vei.getStatus() == Status.DISPONIVEL){
@@ -51,11 +51,11 @@ public class Alugar implements OrdemDeServiso {
         // }o
 
         //((Carro)vei).setStatus(Status.ALUGADO);
-        servise.alugar(vei, cl);
+        servise.alugar(this);
     }
 
     @Override
-    public void devolver(Cliente cl, Veiculo vei) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException {
+    public void devolver(Cliente cl, Veiculo vei) {
         if (clientes.contains(cl)) {
             if (veiculos.contains(vei)){
                 if (vei.getStatus() == Status.ALUGADO){
@@ -97,6 +97,43 @@ public class Alugar implements OrdemDeServiso {
         total += v.getTarifa() * dias;
         System.out.println("Valor total do aluguel: R$" + total);
     }
+
+    public Cliente getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(Cliente clientes) {
+        this.clientes = clientes;
+    }
+
+    public LocalDate getDataEmisao() {
+        return dataEmisao;
+    }
+
+    public void setDataEmisao(LocalDate dataEmisao) {
+        this.dataEmisao = dataEmisao;
+    }
+
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public Veiculo getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(Veiculo veiculos) {
+        this.veiculos = veiculos;
+    }
+
+    public String toCSV() {
+        return clientes.toCSV() + "," + veiculos.toCSV() + "," + dataDevolucao.toString();
+    }
+
 
 
 }

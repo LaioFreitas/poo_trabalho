@@ -1,6 +1,8 @@
 package com.app;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -59,6 +61,9 @@ public class FormAlugarVeiculoController implements Initializable {
     private TextField txtCnh;
 
     @FXML
+    private TextField txtDataDeDevolucao;
+
+    @FXML
     private Label labelNome;
     
     @FXML
@@ -84,6 +89,9 @@ public class FormAlugarVeiculoController implements Initializable {
 
     @FXML
     private Label labelCnh;
+
+    @FXML
+    private Label labelDataDeDEvolucao;
 
     
     @FXML
@@ -117,13 +125,20 @@ public class FormAlugarVeiculoController implements Initializable {
         // } catch (Exception e) {
         //     Alerts.showAlert("Erro ao alugar", null, e.getMessage(), Alert.AlertType.ERROR);
         // }
+        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         if (service == null) {
             throw new IllegalStateException("sem service");
         }
+        // if (aluguel == null) {
+        //     throw new IllegalStateException("Aluguel e nulo");
+        // }
         try {
             cliente = getFormData();
-            service.alugar(veiculo, cliente);
+            LocalDate date = LocalDate.parse(txtDataDeDevolucao.getText(), fmt1);
+
+            aluguel = new Alugar(cliente, date, veiculo);
+            aluguel.alugar(service); 
             Utils.currentStage(event).close();
         }
         catch (ValidationExeception e) {
@@ -149,6 +164,7 @@ public class FormAlugarVeiculoController implements Initializable {
         String estado = txtEstado.getText();
         String telefone = txtTelefone.getText();
         String cnh = txtCnh.getText();
+        String data = txtDataDeDevolucao.getText();
 
         if (name == null || name.trim().equals("")) {
             exeception.addError("nome", "Campo nao pode ser vazil");
@@ -177,6 +193,10 @@ public class FormAlugarVeiculoController implements Initializable {
         if (cnh == null || cnh.trim().equals("")) {
             exeception.addError("cnh", "Campo nao pode ser vazil");
         }
+        if (data == null || data.trim().equals("")) {
+            exeception.addError("data", "Campo nao pode ser vazil");
+        }
+
         if (exeception.getErrors().size() > 0) {
             throw exeception;
         }
@@ -216,6 +236,9 @@ public class FormAlugarVeiculoController implements Initializable {
         }
         if (fields.contains("cnh")) {
             labelCnh.setText(errors.get("cnh"));
+        }
+        if (fields.contains("data")) {
+            labelDataDeDEvolucao.setText(errors.get("data"));
         }
     }
 

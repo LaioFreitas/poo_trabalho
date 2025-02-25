@@ -10,7 +10,7 @@ import com.app.data.service.VeiculoServise;
 
 public interface OrdemDeServiso {
     
-    public void alugar(Cliente cliente, Veiculo veiculom, VeiculoServise servise) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException;
+    public void alugar(VeiculoServise servise) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException;
     public void devolver(Cliente cliente, Veiculo veiculo) throws ClienteInexistenteException, VeiculoInexistenteException, VeiculoIndisponivelException;
     public void listar();
     public LocalDate DataEmisao();
