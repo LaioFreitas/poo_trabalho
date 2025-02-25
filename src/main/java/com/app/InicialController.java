@@ -47,7 +47,9 @@ public class InicialController implements Initializable {
     
     @FXML
     public void onDevolverAction() {
-        loadView("ListaVeicolos", _x -> {});
+        loadView("ListaVeicolos", _x -> {
+            
+        });
     }
     
     @FXML

@@ -64,7 +64,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
           <Button fx:id="btAlugar" mnemonicParsing="false" onAction="#onBtAlugarAction" text="Alugar" />
-            <Button fx:id="btCancelar" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#onBtCancelarAction" text="Cancelar" />
         </buttons>
       </ButtonBar>
    </children>

@@ -47,7 +47,12 @@ public class VeiculoServise {
      }
 
      private List<Alugar> convetAlugarList(List<String> list) {
-          
+          List<Alugar> l = new ArrayList<>();
+          for (String s : list) {
+               String[] fields = s.split(",");
+
+               Alugar aluguel = new Alugar(null, null, null)
+          }
      }
 
      private List<String> readCSVList(String path) {
@@ -117,6 +122,7 @@ public class VeiculoServise {
      public void alugar(Veiculo vei, Cliente cliente) {
           atualizarDadosDisponiveis("src/main/java/com/app/data/veiculosDisponiveis.csv", vei);
           vei.setStatus(Status.ALUGADO);
+          
           salvaVeiculoAlugado("src/main/java/com/app/data/veiculosAlugados.csv", vei, cliente);
      }
 

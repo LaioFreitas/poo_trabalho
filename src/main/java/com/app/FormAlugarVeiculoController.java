@@ -89,7 +89,8 @@ public class FormAlugarVeiculoController implements Initializable {
     @FXML
     private Button btAlugar;
 
-    @FXML Button btCancelar;
+    @FXML 
+    private Button btCancelar;
 
     @FXML
     public void onBtAlugarAction(ActionEvent event) {
@@ -128,7 +129,6 @@ public class FormAlugarVeiculoController implements Initializable {
         catch (ValidationExeception e) {
             setErrorMessage(e.getErrors());
         }
-        Utils.currentStage(event).close();
     }
 
     @FXML
