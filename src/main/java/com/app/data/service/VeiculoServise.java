@@ -61,7 +61,6 @@ public class VeiculoServise {
           for (String s : list) {
                String[] fields = s.split(",");
                Veiculo veiculo = new Carro(fields[0], fields[1], fields[2], Utils.tryParseToDouble(fields[3]), Status.valueOf(fields[4]));
-               System.out.println(((Carro)veiculo).toCSV());
                veiculos.add(veiculo);
           }
           return veiculos;

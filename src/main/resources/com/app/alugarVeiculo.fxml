@@ -24,6 +24,7 @@
                 <TableColumn fx:id="collumnModelo" prefWidth="75.0" text="Modelo" />
                 <TableColumn fx:id="collumnKilometragem" prefWidth="92.0" text="Kilometragem" />
                   <TableColumn fx:id="collumnPlaca" prefWidth="78.0" text="Placa" />
+                  <TableColumn fx:id="collumnAlugar" prefWidth="75.0" />
               </columns>
             </TableView>
          </content>
