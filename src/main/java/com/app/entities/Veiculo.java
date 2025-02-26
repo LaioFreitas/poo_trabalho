@@ -94,6 +94,4 @@ public abstract class Veiculo {
         return true;
     }
 
-    public abstract boolean contains(Veiculo vei);
-
 }

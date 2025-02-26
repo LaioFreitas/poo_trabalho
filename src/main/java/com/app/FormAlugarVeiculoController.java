@@ -154,7 +154,7 @@ public class FormAlugarVeiculoController implements Initializable {
     public void onBtCancelarAction(ActionEvent event) {
         Utils.currentStage(event).close();
     }
-    // pega os dados do formulario e verifica se sao vazios ou nulos 
+
     private Cliente getFormData() {
         Cliente obj;
         ValidationExeception exeception = new ValidationExeception("Error de validacao");
@@ -210,7 +210,6 @@ public class FormAlugarVeiculoController implements Initializable {
         return obj;
     }
 
-    // seta a mensagem de erro no formulario, para cada campo que estiver vazio ou nulo
     private void setErrorMessage(Map<String, String> errors) {
 
         Set<String> fields = errors.keySet();

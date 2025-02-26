@@ -46,22 +46,15 @@ public class VeiculoServise {
           return alugueis;
      }
 
-     // private List<Alugar> convetAlugarList(List<String> list) {
-     //      List<Alugar> l = new ArrayList<>();
-     //      for (String s : list) {
-     //           String[] fields = s.split(",");
+     private List<Alugar> convetAlugarList(List<String> list) {
+          List<Alugar> l = new ArrayList<>();
+          for (String s : list) {
+               String[] fields = s.split(",");
 
-<<<<<<< Updated upstream
                Alugar aluguel = new Alugar(null, null, null);
           }
           return l;
      }
-=======
-     //           Alugar aluguel = new Alugar(null, null, null);
-     //           aluguel.setCliente(new Cliente(fields[0], fields[1], fields[2], fields[3]));
-     //      }
-     // }
->>>>>>> Stashed changes
 
      private List<String> readCSVList(String path) {
 

@@ -72,7 +72,7 @@ public class AlugarVeiculoController implements Initializable {
         loadView("telaInicial");
     }
     
-    private void loadView(String absoluteName) { // carrega a view desejada
+    private void loadView(String absoluteName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName + ".fxml"));
             Parent p = loader.load();
@@ -96,7 +96,7 @@ public class AlugarVeiculoController implements Initializable {
         inicializaNodes();
     }
 
-    private void inicializaNodes() { // inicializa os nós do JAVAFX (elementos da gui)
+    private void inicializaNodes() {
 
         
         collumnModelo.setCellValueFactory(new PropertyValueFactory<>("Modelo"));
@@ -107,7 +107,7 @@ public class AlugarVeiculoController implements Initializable {
         tabelaVeiculosDisponiveis.prefHeightProperty().bind(stage.heightProperty());
     }
 
-    public void updateTableView() { // atualiza a tabela
+    public void updateTableView() {
         if (service == null) {
             throw new IllegalStateException("Service was null");
         }
@@ -144,7 +144,7 @@ public class AlugarVeiculoController implements Initializable {
             //e.printStackTrace();
         }
     }
-    //pop up que cria os dados do cliente
+
     private void creatDialogFormAlugar(Veiculo veiculo, String absoluteName, Stage parentStage) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAlugarVeiculo.fxml"));
@@ -170,7 +170,7 @@ public class AlugarVeiculoController implements Initializable {
         
     }
 
-    private void initEditButtons() { // coloca os botoes de alugar na tabela, cria um botao com o nome alugar na celula, e set acao do formulario do nome do cliente 
+    private void initEditButtons() {
         collumnAlugar.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         collumnAlugar.setCellFactory(param -> new TableCell<Veiculo, Veiculo>() {
             private final Button button = new Button("Alugar");
