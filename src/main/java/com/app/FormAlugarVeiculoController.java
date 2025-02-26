@@ -258,9 +258,10 @@ public class FormAlugarVeiculoController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Constraints.setTextFieldDataFormater(txtDataDeDevolucao);
         Constraints.setTextFieldInterger(txtNumero);
         Constraints.setTextFieldInterger(txtCpf);
+        Constraints.setTextFieldMaxLength(txtCpf, 11);
+
     }
 
     public VeiculoServise getService() {
