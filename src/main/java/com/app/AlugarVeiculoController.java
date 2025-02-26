@@ -12,7 +12,6 @@ import com.app.entities.Veiculo;
 import com.app.gui.Alerts;
 import com.app.servises.Alugar;
 import com.app.utils.Utils;
-import com.app.veiculos.Carro;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
