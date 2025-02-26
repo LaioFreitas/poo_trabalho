@@ -56,22 +56,7 @@ public class Alugar implements OrdemDeServiso {
 
     @Override
     public void devolver(Cliente cl, Veiculo vei) {
-        if (clientes.contains(cl)) {
-            if (veiculos.contains(vei)){
-                if (vei.getStatus() == Status.ALUGADO){
-                        System.out.println("Veículo Devolvido"); // implementar com a GUI
-                        vei.setStatus(Status.DISPONIVEL);
-                        this.DataDevolucao(); // Conseguir a data de devolução;
-                        this.valorTotal(vei);
-                } else {
-                    throw new VeiculoIndisponivelException();
-                }
-            } else {
-                throw new VeiculoInexistenteException();
-            }
-        } else {
-            throw new ClienteInexistenteException();
-        }
+
     }
 
     @Override
