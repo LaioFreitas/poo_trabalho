@@ -1,22 +1,12 @@
 package com.app.servises;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
 
-import com.app.data.exceptions.ClienteInexistenteException;
-import com.app.data.exceptions.VeiculoIndisponivelException;
-import com.app.data.exceptions.VeiculoInexistenteException;
 import com.app.data.service.VeiculoServise;
 import com.app.entities.Cliente;
 import com.app.entities.OrdemDeServiso;
 import com.app.entities.Veiculo;
-import com.app.enums.Status;
-import com.app.veiculos.Carro;
-import com.app.data.exceptions.*;
 public class Alugar implements OrdemDeServiso {
 
     private static Integer ID;
@@ -34,23 +24,7 @@ public class Alugar implements OrdemDeServiso {
 
     @Override
     public void alugar(VeiculoServise servise) {
-        // if (clientes.contains(cl)) {
-        //     if (veiculos.contains(vei)){
-        //         if (vei.getStatus() == Status.DISPONIVEL){
-        //                 System.out.println("Veículo Alugado"); // implementar com a GUI
-        //                 vei.setStatus(Status.ALUGADO);
-        //                 this.DataEmisao(); // Conseguir a data de Emissão
-        //         } else {
-        //             throw new VeiculoIndisponivelException();
-        //         }
-        //     } else {
-        //         throw new VeiculoInexistenteException();
-        //     }
-        // } else {
-        //     throw new ClienteInexistenteException();
-        // }o
 
-        //((Carro)vei).setStatus(Status.ALUGADO);
         servise.alugar(this);
     }
 
