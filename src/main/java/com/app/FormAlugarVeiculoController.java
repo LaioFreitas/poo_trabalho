@@ -260,6 +260,8 @@ public class FormAlugarVeiculoController implements Initializable {
         Constraints.setTextFieldInterger(txtNumero);
         Constraints.setTextFieldInterger(txtCpf);
         Constraints.setTextFieldMaxLength(txtCpf, 11);
+        Constraints.setTextFieldInterger(txtTelefone);
+        Constraints.setTextFieldMaxLength(txtTelefone, 11);
 
     }
 
