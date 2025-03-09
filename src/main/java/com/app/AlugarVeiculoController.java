@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -117,32 +118,6 @@ public class AlugarVeiculoController implements Initializable {
         initEditButtons();
     }
 
-        private void createDialogForm(Veiculo obj, String absoluteName, Stage parentStage) {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-            Pane pane = loader.load();
-            
-            // DepartmentFormController controller = loader.getController();
-            AlugarVeiculoController controller = loader.getController();
-            controller.setVeiculo(obj);
-            controller.setVeiculoService(new VeiculoServise());
-
-            
-            
-            
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Enter Veiculo Data");
-            dialogStage.setScene(new Scene(pane));
-            dialogStage.setResizable(false);
-            dialogStage.initOwner(parentStage);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.showAndWait();
-        }
-        catch (IOException e) {
-            Alerts.showAlert("IO exception", "Error load view", e.getMessage(), Alert.AlertType.ERROR);
-            //e.printStackTrace();
-        }
-    }
 
     private void creatDialogFormAlugar(Veiculo veiculo, String absoluteName, Stage parentStage) {
         try {
@@ -162,6 +137,7 @@ public class AlugarVeiculoController implements Initializable {
             dialogStage.initOwner(parentStage);
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.showAndWait();
+            
         }
         catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
@@ -173,6 +149,7 @@ public class AlugarVeiculoController implements Initializable {
         collumnAlugar.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         collumnAlugar.setCellFactory(param -> new TableCell<Veiculo, Veiculo>() {
             private final Button button = new Button("Alugar");
+            //private final Label label = new Label("");
 
             @Override
             protected void updateItem(Veiculo obj, boolean empty) {
@@ -181,12 +158,17 @@ public class AlugarVeiculoController implements Initializable {
                     setGraphic(null);
                     return;
                 }
+                //label.setText(obj.getModelo());
+                //button.setText(obj.getModelo());
                 setGraphic(button);
                 button.setOnAction(
-                        event -> creatDialogFormAlugar(obj, "formAlugarVeiculo.fxml", Utils.currentStage(event)));
+                        event -> creatDialogFormAlugar(obj, "formAlugarVeiculo.fxml", Utils.currentStage(event))
+                    );
             }
         });
     }
+
+
 
 
 }

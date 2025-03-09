@@ -60,5 +60,11 @@ public class Carro extends Veiculo {
         this.tarifa = tarifa;
     }
 
+    @Override
+    public String toString() {
+        return this.getModelo();
+    }
+
+
 
 }

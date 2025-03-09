@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -45,9 +46,15 @@ public class InicialController implements Initializable {
     
     @FXML
     public void onDevolverAction() {
-        loadView("ListaVeicolos", _x -> {
-            
-        });
+        loadView("ListaVeicolos", (DevolverController controller) -> {
+                controller.setServise(new VeiculoServise());
+                controller.updateTableView();
+                Scene scene = App.getMainScene();
+                ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
+                scrolllPane.setFitToHeight(true);
+                scrolllPane.setFitToWidth(true);
+            }
+        );
     }
     
     @FXML
@@ -66,10 +73,7 @@ public class InicialController implements Initializable {
             T controller = loader.getController();
             
             initializingAction.accept(controller);
-            // Scene scene = App.getMainScene();
-            // // ScrollPane scrolllPane = ((ScrollPane) scene.getRoot());
-            // // scrolllPane.setFitToHeight(true);
-            // // scrolllPane.setFitToWidth(true);
+
             
         }
         catch (IOException e) {

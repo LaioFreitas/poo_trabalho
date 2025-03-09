@@ -10,16 +10,16 @@ import com.app.entities.Veiculo;
 public class Alugar implements OrdemDeServiso {
 
     private static Integer ID;
-    private Cliente clientes;
+    private Cliente cliente;
     private LocalDate dataEmisao;
     private LocalDate dataDevolucao;
-    private Veiculo veiculos;
+    private Veiculo veiculo;
 
     public Alugar(Cliente cliente, LocalDate dataDevolucao, Veiculo veiculo) {
-        this.clientes = cliente;
+        this.cliente = cliente;
         this.dataEmisao = LocalDate.now();
         this.dataDevolucao = dataDevolucao;
-        this.veiculos = veiculo;
+        this.veiculo = veiculo;
     }
 
     @Override
@@ -57,12 +57,12 @@ public class Alugar implements OrdemDeServiso {
         System.out.println("Valor total do aluguel: R$" + total);
     }
 
-    public Cliente getClientes() {
-        return clientes;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClientes(Cliente clientes) {
-        this.clientes = clientes;
+    public void setCliente(Cliente clientes) {
+        this.cliente = clientes;
     }
 
     public LocalDate getDataEmisao() {
@@ -81,16 +81,16 @@ public class Alugar implements OrdemDeServiso {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public Veiculo getVeiculos() {
-        return veiculos;
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
-    public void setVeiculos(Veiculo veiculos) {
-        this.veiculos = veiculos;
+    public void setVeiculo(Veiculo veiculos) {
+        this.veiculo = veiculos;
     }
 
     public String toCSV() {
-        return clientes.toCSV() + "," + veiculos.toCSV() + "," + dataDevolucao.toString();
+        return cliente.toCSV() + "," + veiculo.toCSV() + "," + dataDevolucao.toString();
     }
 
 

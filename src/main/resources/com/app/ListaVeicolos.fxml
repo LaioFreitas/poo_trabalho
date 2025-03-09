@@ -7,7 +7,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.ListaVeicoloController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.DevolverController">
    <content>
       <VBox prefHeight="400.0" prefWidth="584.0">
          <children>
@@ -16,12 +16,12 @@
                   <Button fx:id="rbVoltar" mnemonicParsing="false" onAction="#onBtVoltarAction" text="&lt; Voltar" />
                </items>
             </ToolBar>
-            <TableView fx:id="tableViewVeiculo" prefHeight="214.0" prefWidth="584.0">
+            <TableView fx:id="tableView" prefHeight="214.0" prefWidth="584.0">
               <columns>
-                <TableColumn fx:id="tableColumnCarros" prefWidth="103.0" text="Cliente" />
-                <TableColumn fx:id="tableColumnMotos" prefWidth="76.0" text="Modelo" />
-                  <TableColumn fx:id="tableColumnCaminhoes" prefWidth="126.0" text="Placa" />
-                  <TableColumn prefWidth="75.0" />
+                <TableColumn fx:id="tableCollumnCliente" prefWidth="103.0" text="Cliente" />
+                <TableColumn fx:id="tableCollumnModelo" prefWidth="76.0" text="Modelo" />
+                  <TableColumn fx:id="tableCollumnPlaca" prefWidth="126.0" text="Placa" />
+                  <TableColumn fx:id="tableCollumnDevolver" prefWidth="75.0" />
               </columns>
             </TableView>
          </children>

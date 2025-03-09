@@ -46,6 +46,11 @@ public class Cliente extends Pessoa {
         return String.format("%s,%s,%s,%d,%s,%s,%s,%s,%s", getNome(), getCpf(), endereco.getRua(), endereco.getNumero(), endereco.getBairro(),
                                 endereco.getCidade(), endereco.getEstado(), getTelefone(), getCategoriaChn());       
     }
+    
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
 
 
 }

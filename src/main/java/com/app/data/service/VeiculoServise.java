@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import com.app.entities.Cliente;
 import com.app.entities.Veiculo;
 import com.app.enums.Status;
 import com.app.servises.Alugar;
+import com.app.utils.Endereco;
 import com.app.utils.Utils;
 import com.app.veiculos.Carro;
 
@@ -25,13 +27,13 @@ public class VeiculoServise {
 
      public void save(Veiculo veiculo) {
         
-       try( FileWriter writer = new FileWriter("src/main/java/com/app/data/veiculosDisponiveis.csv", true)) {
-            writer.write(veiculo.toCSV());
-            writer.write("\n");
-       }
-       catch(IOException e) {
-            e.printStackTrace();
-       }
+          try( FileWriter writer = new FileWriter("src/main/java/com/app/data/veiculosDisponiveis.csv", true)) {
+               writer.write(veiculo.toCSV());
+               writer.write("\n");
+          }
+          catch(IOException e) {
+               e.printStackTrace();
+          }
 
      }
 
@@ -39,19 +41,27 @@ public class VeiculoServise {
           List<String> list = readCSVList("src/main/java/com/app/data/veiculosDisponiveis.csv");
           veiculos = convertVeicolo(list);
           return veiculos;
-     }
+     } 
 
      public List<Alugar> findAllAlugados() {
           List<String> list = readCSVList("src/main/java/com/app/data/veiculosAlugados.csv");
+          alugueis = convetAlugarList(list);
           return alugueis;
      }
 
      private List<Alugar> convetAlugarList(List<String> list) {
           List<Alugar> l = new ArrayList<>();
+
           for (String s : list) {
                String[] fields = s.split(",");
 
-               Alugar aluguel = new Alugar(null, null, null);
+               Endereco endereco = new Endereco(fields[2], Utils.tryParceToInteger(fields[3]), fields[4], fields[5], fields[6]);
+
+               Cliente cliente = new Cliente(fields[0], fields[1], endereco, fields[7], fields[8]);
+               Veiculo carro = new Carro(fields[9], fields[10], fields[11], Utils.tryParseToDouble(fields[12]), Status.valueOf(fields[13]));
+
+               Alugar aluguel = new Alugar(cliente, LocalDate.parse(fields[14]) , carro);
+               l.add(aluguel);
           }
           return l;
      }
@@ -65,7 +75,6 @@ public class VeiculoServise {
                     list.add(line);
                     line = br.readLine();
                }
-               
           }
           catch (IOException e) {
                System.out.println("Error: " + e.getMessage());
@@ -118,16 +127,11 @@ public class VeiculoServise {
           } 
      }
 
-
-
      public void alugar(Alugar aluguel) {
 
-          atualizarDadosDisponiveis("src/main/java/com/app/data/veiculosDisponiveis.csv", aluguel.getVeiculos());
-          (aluguel.getVeiculos()).setStatus(Status.ALUGADO);
+          atualizarDadosDisponiveis("src/main/java/com/app/data/veiculosDisponiveis.csv", aluguel.getVeiculo());
+          (aluguel.getVeiculo()).setStatus(Status.ALUGADO);
           
           salvaVeiculoAlugado("src/main/java/com/app/data/veiculosAlugados.csv", aluguel);
      }
-
-
-
 }
