@@ -9,7 +9,6 @@ import com.app.entities.OrdemDeServiso;
 import com.app.entities.Veiculo;
 public class Alugar implements OrdemDeServiso {
 
-    private static Integer ID;
     private Cliente cliente;
     private LocalDate dataEmisao;
     private LocalDate dataDevolucao;

@@ -1,7 +1,6 @@
 package com.app.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.app.data.exceptions.ClienteInexistenteException;
 import com.app.data.exceptions.VeiculoIndisponivelException;

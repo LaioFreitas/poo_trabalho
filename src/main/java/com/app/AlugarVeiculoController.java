@@ -149,7 +149,6 @@ public class AlugarVeiculoController implements Initializable {
         collumnAlugar.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         collumnAlugar.setCellFactory(param -> new TableCell<Veiculo, Veiculo>() {
             private final Button button = new Button("Alugar");
-            //private final Label label = new Label("");
 
             @Override
             protected void updateItem(Veiculo obj, boolean empty) {
@@ -158,12 +157,10 @@ public class AlugarVeiculoController implements Initializable {
                     setGraphic(null);
                     return;
                 }
-                //label.setText(obj.getModelo());
-                //button.setText(obj.getModelo());
                 setGraphic(button);
                 button.setOnAction(
-                        event -> creatDialogFormAlugar(obj, "formAlugarVeiculo.fxml", Utils.currentStage(event))
-                    );
+                    event -> creatDialogFormAlugar(obj, "formAlugarVeiculo.fxml", Utils.currentStage(event))
+                );
             }
         });
     }

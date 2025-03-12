@@ -100,7 +100,7 @@ public class DevolverController implements Initializable {
             protected void updateItem(Cliente item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(empty ? "" : item.getNome());
-                setAlignment(Pos.CENTER_LEFT);
+                setAlignment(Pos.BOTTOM_LEFT);
             }
         };
         Callback<TableColumn<Alugar, Veiculo>, TableCell<Alugar, Veiculo>> factory2 = param -> new TableCell<Alugar, Veiculo>() {
@@ -111,9 +111,8 @@ public class DevolverController implements Initializable {
                 super.updateItem(item, empty);
                 setText(empty ? "" : item.getModelo());
                 // this.textAlignmentProperty().bind(TextAlignment.CENTER);
-                System.out.println(this.textProperty());
                 // textAlignmentProperty().bind();
-                setAlignment(Pos.CENTER_LEFT);
+                setAlignment(Pos.BOTTOM_LEFT);
             }
         };
         Callback<TableColumn<Alugar, Alugar>, TableCell<Alugar, Alugar>> factory3 = param -> new TableCell<Alugar, Alugar>() {
@@ -130,6 +129,7 @@ public class DevolverController implements Initializable {
                     return;
                 }
                 setGraphic(button);
+                button.setOnAction(event -> devolverVeiculo(item));
             }
         };
 
@@ -138,4 +138,8 @@ public class DevolverController implements Initializable {
         tableCollumnPlaca.setCellFactory(factory2);
         tableCollumnDevolver.setCellFactory(factory3);
     }    
+
+    private void devolverVeiculo(Alugar aluguel) {
+        updateTableView();
+    }
 }

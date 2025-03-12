@@ -30,16 +30,17 @@ public class App extends Application {
         Parent root = p;
         scene.setRoot(root);
     }
+    
+    public static void main(String[] args) {
+        launch();
+    }
+
 
     // private static Parent loadFXML(String fxml) throws IOException {
     //     FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
     //     fxmlLoader.getController();
     //     return fxmlLoader.load();
     // }
-
-    public static void main(String[] args) {
-        launch();
-    }
 
     public static Scene getMainScene() {
         return scene;

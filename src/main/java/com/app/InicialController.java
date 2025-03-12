@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -62,6 +63,12 @@ public class InicialController implements Initializable {
         loadView("alugarVeiculo", (AlugarVeiculoController controller) -> {
             controller.setVeiculoService(new VeiculoServise());
             controller.updateTableView();
+            Scene scene = App.getMainScene();
+            VBox vbox = (VBox) (scene.getRoot());
+            ScrollPane scrollPane = (ScrollPane) vbox.getChildren().get(1);
+            System.out.println(scrollPane);
+            scrollPane.setFitToHeight(true);
+            scrollPane.setFitToWidth(true);
         });
     }
     

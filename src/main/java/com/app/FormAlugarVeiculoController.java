@@ -200,7 +200,6 @@ public class FormAlugarVeiculoController implements Initializable {
         if (data == null || data.trim().equals("")) {
             exeception.addError("data", "Campo nao pode ser vazil");
         }
-
         if (exeception.getErrors().size() > 0) {
             throw exeception;
         }
