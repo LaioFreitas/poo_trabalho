@@ -20,7 +20,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane prefHeight="193.0" prefWidth="600.0">
+      <AnchorPane StyleClass="vbox-com-contorno" prefHeight="193.0" prefWidth="600.0" stylesheets="@estilo.css">
          <children>
             <Button fx:id="btALugar" layoutX="32.0" layoutY="14.0" mnemonicParsing="false" onAction="#onALugarAction" prefHeight="116.0" prefWidth="227.0" text="Alugar Veicuilo" />
             <Button fx:id="btDevolver" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#onDevolverAction" prefHeight="116.0" prefWidth="244.0" text="Devolver veiculos" />

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 // import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import com.app.data.service.VeiculoServise;
 import com.app.entities.Cliente;
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -29,9 +31,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.PopupWindow.AnchorLocation;
 
 public class AlugarVeiculoController implements Initializable {
 
@@ -69,14 +74,19 @@ public class AlugarVeiculoController implements Initializable {
 
     @FXML
     public void onVoltarAction() {
-        loadView("telaInicial");
+        loadView("telaInicial", x -> {
+            AnchorPane pane = (AnchorPane) ((VBox) x.getRoot()).getChildren().get(1);
+            pane.prefHeightProperty().bind(x.heightProperty());
+        });
+        
     }
     
-    private void loadView(String absoluteName) {
+    private void loadView(String absoluteName, Consumer<Scene> initializingAction) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName + ".fxml"));
             Parent p = loader.load();
             App.setRoot(p);
+            initializingAction.accept(p.getScene());
         }
         catch (IOException e) {
             e.printStackTrace();

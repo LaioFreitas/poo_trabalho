@@ -23,13 +23,13 @@ public class ListaVeicoloController implements Initializable {
 
     @FXML
     private TableColumn<Veiculo, String> tableColumnCarros;
-
+    
     @FXML
     private TableColumn<Veiculo, String> tableColumnMotos;
-
+    
     @FXML
     private TableColumn<Veiculo, String> tableColumnCaminhoes;
-
+    
     @FXML
     public void onBtVoltarAction() {
         try {
@@ -40,12 +40,12 @@ public class ListaVeicoloController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
+    
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         Stage stage = (Stage) App.getMainScene().getWindow();
         tableViewVeiculo.prefHeightProperty().bind(stage.heightProperty());
     }
-
+    
 }

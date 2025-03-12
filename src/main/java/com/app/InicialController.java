@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import com.app.data.service.VeiculoServise;
+import com.app.entities.Veiculo;
 import com.app.gui.Alerts;
 //import com.app.utils.Utils;
 
@@ -14,12 +15,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -65,10 +69,17 @@ public class InicialController implements Initializable {
             controller.updateTableView();
             Scene scene = App.getMainScene();
             VBox vbox = (VBox) (scene.getRoot());
+            vbox.setFillWidth(true);
             ScrollPane scrollPane = (ScrollPane) vbox.getChildren().get(1);
             System.out.println(scrollPane);
             scrollPane.setFitToHeight(true);
             scrollPane.setFitToWidth(true);
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+            scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+            scrollPane.prefHeightProperty().bind(vbox.heightProperty());
+            // Node tableView =  scrollPane.getContent();
+            // TableView<?> table = (TableView<?>) tableView;
+            // table.prefHeightProperty().bind(vbox.heightProperty());
         });
     }
     
@@ -115,6 +126,8 @@ public class InicialController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         Locale.setDefault(Locale.US);
+        Scene scene = App.getMainScene();
+        // Parent vbox = scene.getRoot();
     }
 
 }

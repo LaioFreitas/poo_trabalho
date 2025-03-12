@@ -1,0 +1,10 @@
+.vbox-com-contorno {
+    border-color: black;
+    -fx-border-color: black; /* Cor do contorno */
+    border-width: 2;
+    -fx-border-width: 2; /* Espessura do contorno */
+    border-radius: 5;
+    -fx-border-radius: 5; /* Bordas arredondadas (opcional) */
+    padding: 10;
+    -fx-padding: 10; /* Espaçamento interno */
+}
