@@ -93,7 +93,7 @@ public class AlugarVeiculoController implements Initializable {
         }
         catch (IOException e) {
             e.printStackTrace();
-     }
+        }
     }
 
     public void setVeiculoService(VeiculoServise service) {

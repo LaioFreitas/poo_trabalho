@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
+
 import com.app.data.service.VeiculoServise;
 import com.app.entities.Veiculo;
 import com.app.gui.Alerts;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -127,7 +129,9 @@ public class InicialController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         Locale.setDefault(Locale.US);
         Scene scene = App.getMainScene();
-        // Parent vbox = scene.getRoot();
+        btALugar.prefWidth(90);
+        btALugar.alignmentProperty().setValue(Pos.CENTER_LEFT);; // Parent vbox = scene.getRoot();
+        
     }
 
 }
