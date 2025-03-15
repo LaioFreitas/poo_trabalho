@@ -30,10 +30,13 @@ public class App extends Application {
         stage.show();
         achor.prefHeightProperty().bind(scene.getWindow().heightProperty());
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         achor.getProperties().put("vbox-margin", new Insets(100, 20, 20, 20));
         System.out.println(achor.getProperties() + achor.getPadding().toString());
    }
 =======
+=======
+>>>>>>> Stashed changes
     }
 >>>>>>> Stashed changes
 
