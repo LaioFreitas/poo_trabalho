@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -77,6 +78,8 @@ public class AlugarVeiculoController implements Initializable {
         loadView("telaInicial", x -> {
             AnchorPane pane = (AnchorPane) ((VBox) x.getRoot()).getChildren().get(1);
             pane.prefHeightProperty().bind(x.heightProperty());
+            pane.getProperties().put("vbox-margin", new Insets(100, 20, 20, 20));
+
         });
         
     }

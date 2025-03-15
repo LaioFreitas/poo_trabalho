@@ -94,7 +94,7 @@ public class DevolverController implements Initializable {
         Stage stage = (Stage) App.getMainScene().getWindow();
         tableView.prefHeightProperty().bind(stage.heightProperty());
 
-        Callback<TableColumn<Alugar, Cliente>, TableCell<Alugar, Cliente>> factory = lv -> new TableCell<Alugar, Cliente>() {
+        Callback<TableColumn<Alugar, Cliente>, TableCell<Alugar, Cliente>> factory = _ -> new TableCell<Alugar, Cliente>() {
 
             @Override
             protected void updateItem(Cliente item, boolean empty) {
@@ -103,7 +103,7 @@ public class DevolverController implements Initializable {
                 setAlignment(Pos.BOTTOM_LEFT);
             }
         };
-        Callback<TableColumn<Alugar, Veiculo>, TableCell<Alugar, Veiculo>> factory2 = param -> new TableCell<Alugar, Veiculo>() {
+        Callback<TableColumn<Alugar, Veiculo>, TableCell<Alugar, Veiculo>> factory2 = _ -> new TableCell<Alugar, Veiculo>() {
 
             @Override            
             protected void updateItem(Veiculo item, boolean empty) {
