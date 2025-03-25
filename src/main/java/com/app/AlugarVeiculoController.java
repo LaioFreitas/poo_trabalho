@@ -2,8 +2,8 @@ package com.app;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.EventListener;
 import java.util.List;
-// import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
@@ -17,44 +17,39 @@ import com.app.utils.Utils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.PopupWindow.AnchorLocation;
 
 public class AlugarVeiculoController implements Initializable {
 
     private VeiculoServise service;
-
-    private Alugar aluguel;
-
-    private Veiculo veiculo;
     
     @FXML
     private Button btVoltar;
-    
-    @FXML
-    private Button btAlugar;
 
     @FXML
-    private TextField txtEscolha;
+    private TextField txtPesquisa;
 
     @FXML
     private TableView<Veiculo> tabelaVeiculosDisponiveis;    
@@ -83,6 +78,38 @@ public class AlugarVeiculoController implements Initializable {
         });
         
     }
+
+    public void searchVeiculo() {
+    
+        txtPesquisa.textProperty().addListener((_, _, newValue) -> {
+            System.out.println("miauu");
+
+            List<Veiculo> list = obsList.stream().filter((var veiculo) -> newValue.isEmpty() 
+            || newValue.isBlank() || newValue == null || veiculo.getModelo().toLowerCase().contains(newValue.toLowerCase())).toList();
+            SortedList<Veiculo> sortedList = new SortedList<>(FXCollections.observableArrayList(list));
+            sortedList.comparatorProperty().bind(tabelaVeiculosDisponiveis.comparatorProperty());
+            tabelaVeiculosDisponiveis.setItems(sortedList);        
+        });
+    }
+
+    public EventHandler<KeyEvent> searchVeiculo2() {
+        EventHandler<KeyEvent> event = new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER) {
+                    txtPesquisa.textProperty().addListener((_, _, newValue) -> {
+    
+                        List<Veiculo> list = obsList.stream().filter((var veiculo) -> newValue.isEmpty() 
+                        || newValue.isBlank() || newValue == null || veiculo.getModelo().toLowerCase().contains(newValue.toLowerCase())).toList();
+                        SortedList<Veiculo> sortedList = new SortedList<>(FXCollections.observableArrayList(list));
+                        sortedList.comparatorProperty().bind(tabelaVeiculosDisponiveis.comparatorProperty());
+                        tabelaVeiculosDisponiveis.setItems(sortedList);
+                    });
+                }
+            }
+        };
+        return event;
+    }
     
     private void loadView(String absoluteName, Consumer<Scene> initializingAction) {
         try {
@@ -100,18 +127,21 @@ public class AlugarVeiculoController implements Initializable {
         this.service = service;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         inicializaNodes();
+        // txtPesquisa.setOnKeyPressed(event -> {
+        //     System.out.println(event.getCode());
+        //     if (event.getCode() == KeyCode.ENTER) {
+        //         searchVeiculo();
+        //         event.consume();
+        //     }
+        // });
+        // txtPesquisa.setOnAction(e -> {searchVeiculo();});
+        // txtPesquisa.setOnKeyPressed(searchVeiculo2());
     }
 
     private void inicializaNodes() {
-
-        
         collumnModelo.setCellValueFactory(new PropertyValueFactory<>("Modelo"));
         collumnKilometragem.setCellValueFactory(new PropertyValueFactory<>("Kilometragem"));
         collumnPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
@@ -176,6 +206,10 @@ public class AlugarVeiculoController implements Initializable {
                 );
             }
         });
+    }
+    
+    public TextField getTxtPesquisa() {
+        return txtPesquisa;
     }
 
 

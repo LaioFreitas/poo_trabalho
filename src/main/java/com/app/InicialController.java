@@ -13,6 +13,7 @@ import com.app.gui.Alerts;
 //import com.app.utils.Utils;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -69,16 +72,22 @@ public class InicialController implements Initializable {
         loadView("alugarVeiculo", (AlugarVeiculoController controller) -> {
             controller.setVeiculoService(new VeiculoServise());
             controller.updateTableView();
+            // controller.getTxtPesquisa().setOnKeyPressed(controller.searchVeiculo2());
+            // controller.getTxtPesquisa().setOnAction(null);
+            // controller.getTxtPesquisa().setOnInputMethodTextChanged(controller.searchVeiculo2());
+            // controller.getTxtPesquisa().setOnAction(e -> e.consume());
             Scene scene = App.getMainScene();
             VBox vbox = (VBox) (scene.getRoot());
             vbox.setFillWidth(true);
             ScrollPane scrollPane = (ScrollPane) vbox.getChildren().get(1);
-            System.out.println(scrollPane);
+            System.out.println(controller.getTxtPesquisa().getEventDispatcher());
             scrollPane.setFitToHeight(true);
             scrollPane.setFitToWidth(true);
             scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scrollPane.prefHeightProperty().bind(vbox.heightProperty());
+            vbox.addEventHandler(ActionEvent.ACTION, _ -> controller.searchVeiculo());
+
             // Node tableView =  scrollPane.getContent();
             // TableView<?> table = (TableView<?>) tableView;
             // table.prefHeightProperty().bind(vbox.heightProperty());
@@ -128,10 +137,6 @@ public class InicialController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         Locale.setDefault(Locale.US);
-        Scene scene = App.getMainScene();
-        btALugar.prefWidth(90);
-        btALugar.alignmentProperty().setValue(Pos.CENTER_LEFT);; // Parent vbox = scene.getRoot();
-        
     }
 
 }
