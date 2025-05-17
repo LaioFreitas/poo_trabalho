@@ -15,6 +15,8 @@ import com.app.servises.Alugar;
 import com.app.utils.Utils;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
@@ -81,15 +83,28 @@ public class AlugarVeiculoController implements Initializable {
 
     public void searchVeiculo() {
     
-        txtPesquisa.textProperty().addListener((_, _, newValue) -> {
-            System.out.println("miauu");
+        txtPesquisa.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println("miauu");
+                List<Veiculo> list = obsList.stream().filter((var veiculo) -> newValue.isEmpty() 
+                || newValue.isBlank() || newValue == null || veiculo.getModelo().toLowerCase().contains(newValue.toLowerCase())).toList();
+                SortedList<Veiculo> sortedList = new SortedList<>(FXCollections.observableArrayList(list));
+                sortedList.comparatorProperty().bind(tabelaVeiculosDisponiveis.comparatorProperty());
+                tabelaVeiculosDisponiveis.setItems(sortedList);
+                txtPesquisa.textProperty().removeListener(this);
+            }
+        }); 
+        // {
+        //     System.out.println("miauu");
 
-            List<Veiculo> list = obsList.stream().filter((var veiculo) -> newValue.isEmpty() 
-            || newValue.isBlank() || newValue == null || veiculo.getModelo().toLowerCase().contains(newValue.toLowerCase())).toList();
-            SortedList<Veiculo> sortedList = new SortedList<>(FXCollections.observableArrayList(list));
-            sortedList.comparatorProperty().bind(tabelaVeiculosDisponiveis.comparatorProperty());
-            tabelaVeiculosDisponiveis.setItems(sortedList);        
-        });
+        //     List<Veiculo> list = obsList.stream().filter((var veiculo) -> newValue.isEmpty() 
+        //     || newValue.isBlank() || newValue == null || veiculo.getModelo().toLowerCase().contains(newValue.toLowerCase())).toList();
+        //     SortedList<Veiculo> sortedList = new SortedList<>(FXCollections.observableArrayList(list));
+        //     sortedList.comparatorProperty().bind(tabelaVeiculosDisponiveis.comparatorProperty());
+        //     tabelaVeiculosDisponiveis.setItems(sortedList);        
+        //     txtPesquisa.textProperty().removeListener(this);
+        // });
     }
 
     public EventHandler<KeyEvent> searchVeiculo2() {

@@ -72,7 +72,8 @@ public class InicialController implements Initializable {
         loadView("alugarVeiculo", (AlugarVeiculoController controller) -> {
             controller.setVeiculoService(new VeiculoServise());
             controller.updateTableView();
-            // controller.getTxtPesquisa().setOnKeyPressed(controller.searchVeiculo2());
+            controller.getTxtPesquisa().setOnKeyPressed(controller.searchVeiculo2());
+            // controller.getTxtPesquisa().setOnKeyReleased(_ -> controller.getTxtPesquisa().textProperty().removeListener((observable, oldValue, newValue) -> controller.searchVeiculo()));
             // controller.getTxtPesquisa().setOnAction(null);
             // controller.getTxtPesquisa().setOnInputMethodTextChanged(controller.searchVeiculo2());
             // controller.getTxtPesquisa().setOnAction(e -> e.consume());
@@ -86,7 +87,7 @@ public class InicialController implements Initializable {
             scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scrollPane.prefHeightProperty().bind(vbox.heightProperty());
-            vbox.addEventHandler(ActionEvent.ACTION, _ -> controller.searchVeiculo());
+            // vbox.addEventHandler(ActionEvent.ACTION, _ -> controller.searchVeiculo());
 
             // Node tableView =  scrollPane.getContent();
             // TableView<?> table = (TableView<?>) tableView;
