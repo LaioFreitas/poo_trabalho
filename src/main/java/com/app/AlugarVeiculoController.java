@@ -76,7 +76,6 @@ public class AlugarVeiculoController implements Initializable {
             AnchorPane pane = (AnchorPane) ((VBox) x.getRoot()).getChildren().get(1);
             pane.prefHeightProperty().bind(x.heightProperty());
             pane.getProperties().put("vbox-margin", new Insets(100, 20, 20, 20));
-
         });
         
     }
@@ -185,9 +184,8 @@ public class AlugarVeiculoController implements Initializable {
             controller.setVeiculo(veiculo);
             controller.setService(new VeiculoServise());
             controller.setCliente(new Cliente());
-            
+                   
 
-        
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Alugar Veiculo");
             dialogStage.setScene(new Scene(pane));
@@ -200,7 +198,6 @@ public class AlugarVeiculoController implements Initializable {
         catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
-        
     }
 
     private void initEditButtons() {
@@ -226,8 +223,4 @@ public class AlugarVeiculoController implements Initializable {
     public TextField getTxtPesquisa() {
         return txtPesquisa;
     }
-
-
-
-
 }
